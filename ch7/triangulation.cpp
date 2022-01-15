@@ -64,7 +64,7 @@ int main ( int argc, char** argv )
             points[i].y/points[i].z 
         );
         
-        cout<<"point in the first camera frame: "<<pt1_cam<<endl;
+        cout<<"point in the first camera frame: "<<pt1_cam<<endl;  //投影到相机坐标系平面
         cout<<"point projected from 3D "<<pt1_cam_3d<<", d="<<points[i].z<<endl;
         
         // 第二个图
@@ -199,7 +199,7 @@ void triangulation (
     }
     
     Mat pts_4d;
-    cv::triangulatePoints( T1, T2, pts_1, pts_2, pts_4d );
+    cv::triangulatePoints( T1, T2, pts_1, pts_2, pts_4d );    //相当于双目成像 计算三维 T1, T2为基线    以T1为坐标原点
     
     // 转换成非齐次坐标
     for ( int i=0; i<pts_4d.cols; i++ )
